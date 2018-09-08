@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Data Dump</title>
+		<meta charset="utf/8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<nav>
+			<h1>Data Dump</h1>
+			<div id="account">
+                <p><img src="{{ url_for('static', filename='profile.png') }}" alt="profile picture"></p>
+				<p>vaseline_dion</p>
+			</div>
+			<h2>Dashboard</h2>
+			<h2>My Account</h2>
+			<h2>Settings</h2>
+			<h2>Maintenance</h2>
+		</nav>
+		<div id="not-nav">
+			<header>
+                <p><img src="{{ url_for('static', filename='hamburger.png') }}"></p>
+                <p><img src="{{ url_for('static', filename='bell.png') }}"></p>
+			</header>
+			<main>
+				<div class="module">
+					<h1>PUSH</h1>
+				</div>
+				
+				<div class="module">
+					<h1>PUSH</h1>
+				</div>
+				
+				<div class="module">
+					<h1>PUSH</h1>
+				</div>
+				
+				<div class="module">
+					<h1>PUSH</h1>
+				</div>
+			</main>
+		</div>
+        <script src="{{ url_for('script') }}"></script>
+	</body>
+</html>
