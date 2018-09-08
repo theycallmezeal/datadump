@@ -1,9 +1,13 @@
 import sys
 from flask import Flask, render_template
 import serial
+import os.path
 app = Flask(__name__)
 
-arduino = serial.Serial(sys.argv[1], 9600)
+if len(sys.argv) >= 2 and os.path.isfile(sys.argv[1]):
+    arduino = serial.Serial(sys.argv[1], 9600)
+else:
+    print('SERIAL CONSOLE DOES NOT EXIST, NOT OPENING')
 
 @app.route('/')
 def index():
