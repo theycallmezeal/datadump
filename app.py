@@ -1,10 +1,10 @@
 import sys
 from flask import Flask, render_template
-import serial
 import os.path
 app = Flask(__name__)
 
 if len(sys.argv) >= 2 and os.path.isfile(sys.argv[1]):
+    import serial
     arduino = serial.Serial(sys.argv[1], 9600)
 else:
     print('SERIAL CONSOLE DOES NOT EXIST, NOT OPENING')
