@@ -5,7 +5,7 @@ var audioElement2 = document.createElement('audio');
 audioElement2.setAttribute('src', "{{ url_for('static', filename='fanfare.mp3') }}");
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function swing() {
