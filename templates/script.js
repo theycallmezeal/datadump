@@ -15,17 +15,26 @@ async function swing() {
 }
 
 async function shitPost() {
-    audioElement.play();
+    // audioElement.play();
+	uiReset();
     await sleep(4000); 
+	
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
+	uiStage1();
     await sleep(2000);
+	
     $.post("{{ url_for('set_speed', motor='0', speed='90') }}");
+	uiStage2();
     await sleep(800);
+	
+	uiStage3();
     audioElement2.play();
     await swing();
     await sleep(200);
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
     await sleep(1000);
+	
+	uiStage4();
     $.post("{{ url_for('set_speed', motor='0', speed='90') }}");
 }
 
