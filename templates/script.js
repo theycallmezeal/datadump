@@ -4,6 +4,10 @@ audioElement.setAttribute('src', "{{ url_for('static', filename='rumble.mp3') }}
 var audioElement2 = document.createElement('audio');
 audioElement2.setAttribute('src', "{{ url_for('static', filename='fanfare.mp3') }}");
 
+var ctrX = 100;
+var ctrY = 100;
+var radius = 50;
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -18,6 +22,8 @@ async function shitPost() {
     // audioElement.play();
 	uiReset();
 	decrementWipes();
+	radius -= 1;
+	redraw();
     await sleep(4000); 
 	
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
@@ -51,6 +57,7 @@ $(document).ready(function(){
     });
     $('#swing').click(swing);
     $('#shitpost-button').click(shitPost);
+	draw();
 });
 
 function uiReset() {
@@ -98,24 +105,22 @@ function decrementWipes() {
 	$("#wipe-counter").html(wipes - 1);
 }
 
-var ctrX = 100;
-var ctrY = 100;
-
-window.onload = function() {
+function draw() {
 	var canvas = document.getElementById("canvas").getContext("2d");
 	
-	
+	canvas.height = canvas.height;
 	
 	canvas.beginPath();
 	canvas.lineWidth = 3;
 	canvas.strokeStyle = "#aaaaaa";
 	canvas.fillStyle = "#cccccc";
-	canvas.arc(ctrX, ctrY, 70, 0, Math.PI * 2, true);
+	canvas.arc(ctrX, ctrY, 20 + radius, 0, Math.PI * 2, true);
 	canvas.stroke();
 	canvas.fill();
+	canvas.closePath();
 	
 	canvas.fillStyle = "#aaaaaa";
-	canvas.fillRect(28, 100, 2, 100);
+	canvas.fillRect(78 - radius, 100, 2, 100);
 	
 	canvas.beginPath();
 	canvas.strokeStyle = "#baa277";
@@ -124,6 +129,11 @@ window.onload = function() {
 	canvas.stroke();
 	canvas.clip();
 	canvas.clearRect(0, 0, 800, 400);
-	
-	
+	canvas.closePath();
+}
+
+function redraw() {
+	var canvas = document.getElementById("canvas");
+	canvas.width = canvas.width;
+	draw();
 }
