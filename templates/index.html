@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=1">
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="{{ url_for('script') }}" defer></script>
     </head>
     <body>
         <nav>
@@ -29,8 +30,14 @@
                     <h1>PUSH</h1>
                 </div>
                 
-                <div class="module">
-                    <h1>PUSH</h1>
+                <div id="status" class="module">
+                    <p id="stage1">DISPENSING...</p>
+					<p id="stage2">GATHERING WEATHER REPORT...</p>
+					<p id="stage3">PRINTING...</p>
+					<p id="stage4">READY!</p>
+					<div id="progress-bar">
+						<div id="progress-bar-inside"></div>
+					</div>
                 </div>
                 
                 <div class="module">
@@ -42,6 +49,5 @@
                 </div>
             </main>
         </div>
-        <script src="{{ url_for('script') }}"></script>
     </body>
 </html>
