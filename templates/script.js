@@ -42,3 +42,43 @@ $(document).ready(function(){
     $('#swing').click(swing);
     $('#shitpost').click(shitPost);
 });
+
+function uiReset() {
+	setWidth("0%");
+	turnOff("stage1");
+	turnOff("stage2");
+	turnOff("stage3");
+	turnOff("stage4");
+}
+
+function uiStage1() {
+	turnOn("stage1");
+	setWidth("25%");
+}
+
+function uiStage2() {
+	turnOn("stage2");
+	setWidth("50%");
+}
+
+function uiStage3() {
+	turnOn("stage3");
+	setWidth("75%");
+}
+
+function uiStage4() {
+	turnOn("stage4");
+	setWidth("100%");
+}
+	
+function turnOn(id) {
+	$("#" + id).addClass("active");
+}
+
+function turnOff(id) {
+	$("#" + id).removeClass("active");
+}
+
+function setWidth(width) {
+	$("#progress-bar-inside").css("width", width);
+}

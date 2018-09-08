@@ -71,3 +71,36 @@ main {
     margin: 10px;
     border-radius: 10px;
 }
+
+#status p, #status p::before {
+	opacity: 0.7;
+	transition: opacity 0.25s;
+}
+
+#status p.active, #status p.active::before {
+	opacity: 1;
+}
+
+#status p::before {
+	content: "";
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #ed217c;
+	margin-bottom: 2px;
+	margin-right: 10px;
+}
+
+#progress-bar {
+	height: 10px;
+	width: 100%;
+	background-color: #ddd;
+}
+
+#progress-bar-inside {
+	height: 100%;
+	width: 0%;
+	background-color: #1b998b;
+	transition: width 0.25s;
+}
