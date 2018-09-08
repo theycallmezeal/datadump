@@ -17,6 +17,7 @@ async function swing() {
 async function shitPost() {
     // audioElement.play();
 	uiReset();
+	decrementWipes();
     await sleep(4000); 
 	
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
@@ -49,7 +50,7 @@ $(document).ready(function(){
         $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
     });
     $('#swing').click(swing);
-    $('#shitpost').click(shitPost);
+    $('#shitpost-button').click(shitPost);
 });
 
 function uiReset() {
@@ -90,4 +91,39 @@ function turnOff(id) {
 
 function setWidth(width) {
 	$("#progress-bar-inside").css("width", width);
+}
+
+function decrementWipes() {
+	var wipes = parseInt($("#wipe-counter").html());
+	$("#wipe-counter").html(wipes - 1);
+}
+
+var ctrX = 100;
+var ctrY = 100;
+
+window.onload = function() {
+	var canvas = document.getElementById("canvas").getContext("2d");
+	
+	
+	
+	canvas.beginPath();
+	canvas.lineWidth = 3;
+	canvas.strokeStyle = "#aaaaaa";
+	canvas.fillStyle = "#cccccc";
+	canvas.arc(ctrX, ctrY, 70, 0, Math.PI * 2, true);
+	canvas.stroke();
+	canvas.fill();
+	
+	canvas.fillStyle = "#aaaaaa";
+	canvas.fillRect(28, 100, 2, 100);
+	
+	canvas.beginPath();
+	canvas.strokeStyle = "#baa277";
+	canvas.lineWidth = 10;
+	canvas.arc(ctrX, ctrY, 20, 0, Math.PI * 2, true);
+	canvas.stroke();
+	canvas.clip();
+	canvas.clearRect(0, 0, 800, 400);
+	
+	
 }

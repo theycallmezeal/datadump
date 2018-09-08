@@ -104,3 +104,32 @@ main {
 	background-color: #1b998b;
 	transition: width 0.25s;
 }
+
+#shitpost-button {
+	border-radius: 5px;
+	background-color: #2d3047;
+	color: white;
+	padding: 20px;
+}
+
+#shitpost-button:hover {
+	background-color: black;
+}
+
+#wipes-remaining {
+	text-align: center;
+	text-transform: uppercase;
+	display: flex;
+}
+
+#wipes-remaining h1 {
+	font-size: 150%;
+}
+
+#wipes-remaining p {
+	font-size: 500%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #ed217c;
+	text-shadow: 2px 2px 2px #b51059;
+}
