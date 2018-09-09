@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Mukta');
 
-html, body {
+html {
     height: 100%;
 }
 
 body {
+	min-height: 100%;
     background-color: #ddd;
     font-family: Mukta;
     margin: 0px;
@@ -63,6 +64,7 @@ header  > * {
 main {
     display: flex;
     padding: 10px;
+	flex-wrap: wrap;
 }
 
 .module {
