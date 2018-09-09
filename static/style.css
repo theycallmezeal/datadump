@@ -133,3 +133,18 @@ main {
 	color: #ed217c;
 	text-shadow: 2px 2px 2px #b51059;
 }
+
+#retract button {
+	border: none;
+	background-color: #ed217c;
+	color: white;
+	font-family: inherit;
+	font-size: 150%;
+	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+#retract button:hover {
+	background-color: #c11b65;
+}
