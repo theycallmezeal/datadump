@@ -41,7 +41,7 @@ async function shitPost() {
 	
     $.post("{{ url_for('set_speed', motor='0', speed='90') }}");
 	uiStage2();
-    await sleep(800);
+    await sleep(10000);
 	
 	uiStage3();
     
