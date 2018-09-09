@@ -35,13 +35,14 @@ async function shitPost() {
     await sleep(800);
 	
 	uiStage3();
-    audioElement2.play();
+    
     await swing();
     await sleep(200);
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
     await sleep(1000);
 	
 	uiStage4();
+	audioElement2.play();
     $.post("{{ url_for('set_speed', motor='0', speed='90') }}");
 }
 
