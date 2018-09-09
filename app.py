@@ -25,12 +25,11 @@ def index():
 @app.route('/mine/<num>', methods=['POST'])
 def mine(num):
     if not os.path.exists(BLOCKCHAIN):
-        f = open(BLOCKCHAIN, 'w')
-        json.dump([], f)
-        f.close()
-    f = open(BLOCKCHAIN)
-    prev = json.load(f)
-    f.close()
+        with open(BLOCKCHAIN, 'w') as f:
+            json.dump([], f)
+
+    with open(BLOCKCHAIN) as f:
+        prev = json.load(f)
 
     if len(prev) == 0:
         lasthash = ''
@@ -45,9 +44,8 @@ def mine(num):
             break
 
     prev.append({'nonce': nonce, 'roll_count': num, 'hash': h})
-    f = open(BLOCKCHAIN, 'w')
-    json.dump(prev, f)
-    f.close()
+    with open(BLOCKCHAIN, 'w') as f:
+        json.dump(prev, f)
 
     return h
 
