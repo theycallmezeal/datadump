@@ -1,7 +1,16 @@
-import sys
-from flask import Flask, render_template
+import hashlib
+import json
 import os.path
+import random
+import string
+import sys
+
+from flask import Flask, render_template
+
 app = Flask(__name__)
+DIR = os.path.dirname(os.path.realpath(__file__))
+BLOCKCHAIN = os.path.join(DIR, 'static', 'blockchain.json')
+DIFFICULTY = 4
 
 if len(sys.argv) >= 2 and os.path.exists(sys.argv[1]):
     import serial
@@ -12,6 +21,35 @@ else:
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/mine/<num>', methods=['POST'])
+def mine(num):
+    if not os.path.exists(BLOCKCHAIN):
+        f = open(BLOCKCHAIN, 'w')
+        json.dump([], f)
+        f.close()
+    f = open(BLOCKCHAIN)
+    prev = json.load(f)
+    f.close()
+
+    if len(prev) == 0:
+        lasthash = ''
+    else:
+        lasthash = prev[-1]['hash']
+
+    while True:
+        nonce = ''.join([random.choice(string.printable) for _ in range(10)])
+        to_hash = nonce + lasthash + num
+        h = hashlib.sha256(to_hash.encode('utf8')).hexdigest()
+        if all([h[i] == '0' for i in range(DIFFICULTY)]):
+            break
+
+    prev.append({'nonce': nonce, 'roll_count': num, 'hash': h})
+    f = open(BLOCKCHAIN, 'w')
+    json.dump(prev, f)
+    f.close()
+
+    return h
 
 @app.route('/script.js')
 def script():

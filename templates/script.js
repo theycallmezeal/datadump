@@ -18,13 +18,22 @@ async function swing() {
     $.post("{{ url_for('set_speed', motor='1', speed='0') }}");
 }
 
-async function shitPost() {
-    // audioElement.play();
+async function minePost() {
 	uiReset();
 	decrementWipes();
 	radius -= 1;
 	redraw();
-	
+
+	var wipes = $("#wipe-counter").html();
+	var result = await $.post("/mine/" + wipes);
+
+	uiStage0();
+    $("#stage0").html("MINED " + result.substring(0, 15) + "...");
+    await shitPost();
+}
+
+async function shitPost() {
+    // audioElement.play();
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
 	uiStage1();
     await sleep(2000);
@@ -56,32 +65,39 @@ $(document).ready(function(){
         $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
     });
     $('#swing').click(swing);
-    $('#shitpost-button').click(shitPost);
+    $('#shitpost-button').click(minePost);
 	draw();
 	$('#find-toilet-paper').click(hereAPI);
 });
 
 function uiReset() {
+    $("#stage0").html("MINING...");
 	setWidth("0%");
+	turnOff("stage0");
 	turnOff("stage1");
 	turnOff("stage2");
 	turnOff("stage3");
 	turnOff("stage4");
 }
 
+function uiStage0() {
+	turnOn("stage0");
+	setWidth("20%");
+}
+
 function uiStage1() {
 	turnOn("stage1");
-	setWidth("25%");
+	setWidth("40%");
 }
 
 function uiStage2() {
 	turnOn("stage2");
-	setWidth("50%");
+	setWidth("60%");
 }
 
 function uiStage3() {
 	turnOn("stage3");
-	setWidth("75%");
+	setWidth("80%");
 }
 
 function uiStage4() {
