@@ -3,7 +3,7 @@ from flask import Flask, render_template
 import os.path
 app = Flask(__name__)
 
-if len(sys.argv) >= 2 and os.path.isfile(sys.argv[1]):
+if len(sys.argv) >= 2 and os.path.exists(sys.argv[1]):
     import serial
     arduino = serial.Serial(sys.argv[1], 9600)
 else:

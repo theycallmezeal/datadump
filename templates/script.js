@@ -24,7 +24,6 @@ async function shitPost() {
 	decrementWipes();
 	radius -= 1;
 	redraw();
-    await sleep(4000); 
 	
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
 	uiStage1();
