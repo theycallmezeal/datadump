@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Mukta');
+@font-face {
+    font-family: Mukta;
+    src: url(Mukta-Regular.ttf);
+}
+
+@font-face {
+    font-family: Mukta;
+    src: url(Mukta-Bold.ttf);
+	font-weight: bold;
+}
 
 html {
     height: 100%;
@@ -7,7 +16,7 @@ html {
 body {
 	min-height: 100%;
     background-color: #ddd;
-    font-family: Mukta;
+    font-family: Mukta, sans-serif;
     margin: 0px;
     display: flex;
     align-content: stretch;
@@ -164,4 +173,17 @@ main {
 	padding: 5px;
 	border-radius: 5px;
 	border: none;
+}
+
+#blockchain {
+	width: 400px;
+	word-wrap: break-word;
+}
+
+#blockchain a {
+	background-color: #1b988b;
+	color: white;
+	padding: 5px;
+	text-decoration: none;
+	border-radius: 5px;
 }

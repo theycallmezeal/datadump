@@ -23,17 +23,18 @@ async function minePost() {
 	decrementWipes();
 	radius -= 1;
 	redraw();
+	uiStage0();
 
 	var wipes = $("#wipe-counter").html();
 	var result = await $.post("/mine/" + wipes);
-
-	uiStage0();
-    $("#stage0").html("MINED " + result.substring(0, 15) + "...");
+	
+    $("#blockchain-results").html("MINED " + result);
     await shitPost();
 }
 
 async function shitPost() {
     // audioElement.play();
+	
     $.post("{{ url_for('set_speed', motor='0', speed='180') }}");
 	uiStage1();
     await sleep(2000);
