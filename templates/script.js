@@ -58,6 +58,7 @@ $(document).ready(function(){
     $('#swing').click(swing);
     $('#shitpost-button').click(shitPost);
 	draw();
+	$('#find-toilet-paper').click(hereAPI);
 });
 
 function uiReset() {
@@ -136,4 +137,21 @@ function redraw() {
 	var canvas = document.getElementById("canvas");
 	canvas.width = canvas.width;
 	draw();
+}
+
+var lastSeen = 0;
+
+function hereAPI() {
+	var queries = [
+		'https://image.maps.api.here.com/mia/1.6/mapview?c=39.953170%2C%20-75.192741&z=14&app_id=0b4cmWmlbhkohH9tr1b5&app_code=k0XGaAYa8jWZxNnD7uqjWg',
+		'https://image.maps.api.here.com/mia/1.6/mapview?c=39.952374%2C%20-75.170898&z=14&app_id=0b4cmWmlbhkohH9tr1b5&app_code=k0XGaAYa8jWZxNnD7uqjWg',
+		'https://image.maps.api.here.com/mia/1.6/mapview?c=39.951436%2C%20-75.153045&z=14&app_id=0b4cmWmlbhkohH9tr1b5&app_code=k0XGaAYa8jWZxNnD7uqjWg'
+	]
+	
+	var random = Math.floor(Math.random() * 3);
+	while (random == lastSeen) {
+		random = Math.floor(Math.random() * 3);
+	}
+	lastSeen = random;
+	document.getElementById("tp-map").src = queries[random];
 }

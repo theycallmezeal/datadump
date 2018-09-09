@@ -149,3 +149,17 @@ main {
 #retract button:hover {
 	background-color: #c11b65;
 }
+
+#toilet-paper-map-image {
+	height: 320px;
+	width: 240px;
+}
+
+#find-toilet-paper {
+	font-family: inherit;
+	background-color: #1b998b;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+}
